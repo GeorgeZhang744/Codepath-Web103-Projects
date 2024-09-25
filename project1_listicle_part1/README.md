@@ -1,4 +1,4 @@
-# WEB103 Project 1 - *Name of App Here*
+# WEB103 Project 1 - *Hollow Knight Listicle*
 
 Submitted by: **George Zhang**
 
