@@ -29,11 +29,9 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-**Note: please be sure to 
-
 Here's a walkthrough of implemented required features:
 
-<img src='https://github.com/GeorgeZhang744/Codepath-Web103-Projects/tree/main/project1_listicle_part1/project1Walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+[Video Walkthrough](https://github.com/GeorgeZhang744/Codepath-Web103-Projects/tree/main/project1_listicle_part1/project1Walkthrough.gif)
 
 ## Notes
 
