@@ -9,7 +9,7 @@ const renderBoss = async () => {
   console.log(boss)
 
   if (boss) {
-    document.getElementById("image").src = `/assets/${boss.image}`;
+    document.getElementById("image").src = boss.image;
     document.getElementById("name").textContent = boss.name;
     document.getElementById("health").textContent = "Health: " + boss.health;
     document.getElementById("location").textContent = "Location: " + boss.location;
