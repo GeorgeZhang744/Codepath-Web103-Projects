@@ -1,6 +1,6 @@
 import { pool } from "./database.js";
 import "./dotenv.js";
-import bossData from "../data/bosses";
+import bossData from "../data/bosses.js";
 
 const createBossesTable = async () => {
   const createTableQuery = `
@@ -11,7 +11,7 @@ const createBossesTable = async () => {
       name VARCHAR(255) NOT NULL,
       health INT NOT NULL,
       location VARCHAR(255) NOT NULL,
-      image VARCHAR(255) NOT NULL,
+      image TEXT NOT NULL,
       description TEXT NOT NULL
     )
   `;
@@ -20,33 +20,30 @@ const createBossesTable = async () => {
     const res = await pool.query(createTableQuery);
     console.log("🎉 bosses table created successfully");
   } catch (err) {
-    console.error("⚠️ error creating gifts table", err);
+    console.error("⚠️ error creating bosses table", err);
   }
 };
 
 const seedBossesTable = async () => {
   await createBossesTable();
 
-  bossData.forEach((boss) => {
-    const insertQuery = {
-      text: 'INSERT INTO bosses (name, health, location, image, description) VALUES ($1, $2, $3, $4, $5)'
-    }
+  try {
+    for (const boss of bossData) {
+      const insertQuery = `
+        INSERT INTO bosses (name, health, location, image, description)
+        VALUES ($1, $2, $3, $4, $5)
+      `;
 
-    const values = [
-      boss.name,
-      boss.health,
-      boss.location,
-      boss.image,
-      boss.description
-    ]
+      const values = [boss.name, boss.health, boss.location, boss.image, boss.description];
 
-    pool.query(insertQuery, values, (err, res) => {
-      if (err) {
-        console.error("⚠️ error inserting boss", err);
-        return;
-      }
-
+      await pool.query(insertQuery, values);
       console.log(`✅ ${boss.name} added successfully`);
-    })
-  })
+    }
+  } catch (err) {
+    console.error("⚠️ error inserting boss", err);
+  } finally {
+    pool.end();
+  }
 };
+
+seedBossesTable();
