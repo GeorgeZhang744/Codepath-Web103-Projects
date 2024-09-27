@@ -7,7 +7,6 @@ const app = express();
 
 app.use('/public', express.static('./public'));
 app.use('/scripts', express.static('./public/scripts'));
-app.use('/assets', express.static('./data/assets'))
 app.use('/bosses', router)
 
 app.get("/", (req, res) => {
