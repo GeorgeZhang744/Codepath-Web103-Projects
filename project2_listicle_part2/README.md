@@ -1,10 +1,10 @@
-# WEB103 Project 1 - *Hollow Knight Listicle*
+# WEB103 Project 2 - *Hollow Knight Listicle*
 
 Submitted by: **George Zhang**
 
-About this web app: **Listicle Part 1**
+About this web app: **Listicle Part 2**
 
-Time spent: **6** hours
+Time spent: **3** hours
 
 ## Required Features
 
@@ -12,16 +12,13 @@ The following **required** functionality is completed:
 
 <!-- Make sure to check off completed functionality below -->
 - [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
-- [x] **The web app displays a title**
-- [x] **The web app displays at least five list items, each with at least three attributes (such as title, text, and image url)**
-- [x] **The user can click on each item in the list to see a detailed view of it, including all database fields**
-  - [x] *Note: When showing this feature in the video walkthrough, please show the unique URL for each detailed view. We will not be able to give points if we cannot see the implementation* 
-- [x] **The web app serves an appropriate 404 page when no matching route is defined**
-- [ ] **The web app is appropriately styled using Picocss**
+- [x] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items**
+- [x] **The PostgreSQL database includes a table that matches the data displayed in the web app**
+  - [x] **NOTE: Your GIF or a screenshot added to the README must include a view of your Railway database that shows the contents of the table used by your app**
 
 The following **optional** features are implemented:
 
-- [x] The web app displays items in a unique format, such as cards rather than lists
+- [ ] The user can search for items with a specific attribute
 
 The following **additional** features are implemented:
 
@@ -31,7 +28,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-[Video Walkthrough](https://github.com/GeorgeZhang744/Codepath-Web103-Projects/tree/main/project1_listicle_part1/project1Walkthrough.gif)
+[Video Walkthrough](https://github.com/GeorgeZhang744/Codepath-Web103-Projects/tree/main/project2_listicle_part2/project2Walkthrough.gif)
 
 ## Notes
 
