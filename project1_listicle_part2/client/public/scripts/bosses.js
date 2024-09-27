@@ -15,15 +15,11 @@ const renderBosses = async () => {
       const bottomContainer = document.createElement("div");
       bottomContainer.classList.add("bottom-container");
    
-      topContainer.style.backgroundImage = `url(/assets/${boss.image})`;
+      topContainer.style.backgroundImage = `url(${boss.image})`;
 
       const name = document.createElement("h3");
       name.textContent = boss.name;
       bottomContainer.appendChild(name);
-
-      // const health = document.createElement("p");
-      // health.textContent = "Health: " + boss.health;
-      // bottomContainer.appendChild(health);
 
       const location = document.createElement("p");
       location.textContent = "Location: " + boss.location;
