@@ -1,14 +1,23 @@
 import "./App.css";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import HomePage from './pages/'
+import Layout from "./pages/Layout";
+import HomePage from "./pages/HomePage";
+import EventsPage from "./pages/EventsPage";
+import EventsByLocationPage from "./pages/EventsByLocationPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-  return <Routes>
-    <Route index="true">
-
-    </Route>
-  </Routes>;
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="events" element={<EventsPage />} />
+        <Route path="events/location/:eventLocation" element={<EventsByLocationPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
+  );
 }
 
 export default App;
