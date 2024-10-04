@@ -16,19 +16,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/locations", async (req, res) => {
-  const getAllLocationsQuery = `
-    SELECT DISTINCT location FROM events
-  `;
-
-  try {
-    const result = await pool.query(getAllLocationsQuery);
-    res.status(200).json(result.rows.map(data => data.location));
-  } catch (err) {
-    res.status(409).json({ error: err.message });
-  }
-});
-
 router.get("/:eventID", async (req, res) => {
   const eventID = req.params.eventID;
 
