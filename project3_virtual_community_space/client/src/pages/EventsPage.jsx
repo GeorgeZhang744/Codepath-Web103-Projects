@@ -18,8 +18,6 @@ export default function EventsPage() {
 
         const data = await response.json();
 
-        console.log(response);
-
         setEvents(data);
       } catch (err) {
         console.error(err);
@@ -28,8 +26,6 @@ export default function EventsPage() {
 
     fetchEvents();
   }, []);
-
-  console.log(events);
 
   return (
     <div className="container mx-auto p-4">
