@@ -1,7 +1,14 @@
-import './App.css'
+import "./App.css";
+import { Routes, Route, Outlet } from "react-router-dom";
+
+import HomePage from './pages/'
 
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return <Routes>
+    <Route index="true">
+
+    </Route>
+  </Routes>;
 }
 
-export default App
+export default App;
