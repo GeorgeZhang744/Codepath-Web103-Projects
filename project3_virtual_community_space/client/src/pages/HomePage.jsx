@@ -22,7 +22,7 @@ export default function HomePage() {
 
   return (
     <div className="w-full mx-auto px-8 py-20">
-      <h1 className="text-6xl font-bold text-center mb-16">Event Locations</h1>
+      <h1 className="text-5xl font-bold text-center mb-16">Event Locations</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {eventLocations.map((location) => (
           <LocationCard key={location.id} locationName={location.name} imageURL={location.imageURL} />
