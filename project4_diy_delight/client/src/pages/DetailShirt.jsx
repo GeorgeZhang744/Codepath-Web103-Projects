@@ -8,6 +8,7 @@ import TabButtons from "../components/TabButtons";
 
 const DetailShirt = () => {
   const { shirtID } = useParams();
+  
   const basePrice = 15;
   const baseSelectedOption = {
     size: "",
