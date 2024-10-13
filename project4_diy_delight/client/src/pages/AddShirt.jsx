@@ -3,9 +3,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 import OptionCard from "../components/OptionCard";
+import TabButtons from "../components/TabButtons";
 
 const AddShirt = () => {
-  const basePrice = 15.0;
+  const basePrice = 15;
   const baseSelectedOption = {
     size: "",
     color: "",
@@ -115,11 +116,11 @@ const AddShirt = () => {
   };
 
   const reset = () => {
-    setShirtName("")
-    setActiveTab("Size")
+    setShirtName("");
+    setActiveTab("Size");
     setSelectedOptions(baseSelectedOption);
-    setPrice(basePrice)
-  }
+    setPrice(basePrice);
+  };
 
   const createShirt = async () => {
     try {
@@ -134,8 +135,6 @@ const AddShirt = () => {
         name: shirtName,
         ...selectedOptions,
       };
-
-      console.log(shirt)
 
       const response = await fetch("http://localhost:3001/api/shirts", {
         method: "POST",
@@ -154,39 +153,8 @@ const AddShirt = () => {
   return (
     <div className="bg-gray-500 text-white min-h-screen p-8">
       <div className="flex justify-between items-center mb-6">
-        <div className="flex space-x-4 mb-6">
-          <button
-            className={`btn ${
-              activeTab === "Size" ? "bg-black text-white" : "bg-primary text-white"
-            } px-6 py-2 rounded-md hover:bg-black`}
-            onClick={() => setActiveTab("Size")}
-          >
-            Size
-          </button>
-          <button
-            className={`btn ${
-              activeTab === "Color" ? "bg-black text-white" : "bg-primary text-white"
-            } px-6 py-2 rounded-md hover:bg-black`}
-            onClick={() => setActiveTab("Color")}
-          >
-            Color
-          </button>
-          <button
-            className={`btn ${
-              activeTab === "Design" ? "bg-black text-white" : "bg-primary text-white"
-            } px-6 py-2 rounded-md hover:bg-black`}
-            onClick={() => setActiveTab("Design")}
-          >
-            Design
-          </button>
-          <button
-            className={`btn ${
-              activeTab === "Material" ? "bg-black text-white" : "bg-primary text-white"
-            } px-6 py-2 rounded-md hover:bg-black`}
-            onClick={() => setActiveTab("Material")}
-          >
-            Material
-          </button>
+        <div className="flex space-x-4">
+          <TabButtons activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
 
         <div className="flex space-x-4 items-center">
@@ -212,8 +180,6 @@ const AddShirt = () => {
           </span>{" "}
           ${price.toFixed(2)}
         </div>
-
-        <button className="btn bg-red-600 text-white text-xl px-6 rounded-md hover:bg-black">Done</button>
       </div>
     </div>
   );
