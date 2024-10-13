@@ -11,7 +11,7 @@ optionsRouter.get("/sizes", async (req, res) => {
 
   try {
     const result = await pool.query(getSizesQuery);
-    res.status(200).json(result.rows.map((row) => row.size));
+    res.status(200).json(result.rows);
   } catch (err) {
     res.status(409).json({ error: err.message });
   }
@@ -25,7 +25,7 @@ optionsRouter.get("/colors", async (req, res) => {
 
   try {
     const result = await pool.query(getColorsQuery);
-    res.status(200).json(result.rows.map((row) => row.color));
+    res.status(200).json(result.rows);
   } catch (err) {
     res.status(409).json({ error: err.message });
   }
