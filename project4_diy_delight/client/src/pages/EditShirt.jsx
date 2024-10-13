@@ -8,7 +8,7 @@ import TabButtons from "../components/TabButtons";
 
 const EditShirt = () => {
   const { shirtID } = useParams();
-  
+
   const basePrice = 15;
   const baseSelectedOption = {
     size: "",
@@ -29,7 +29,7 @@ const EditShirt = () => {
   const [selectedOptions, setSelectedOptions] = useState(baseSelectedOption);
 
   useEffect(() => {
-    const fetchOptions = async () => {
+    const fetchOptionsAndShirts = async () => {
       try {
         const response1 = await fetch("http://localhost:3001/api/options");
         const response2 = await fetch(`http://localhost:3001/api/shirts/${shirtID}`);
@@ -39,6 +39,7 @@ const EditShirt = () => {
         }
 
         const data1 = await response1.json();
+
         const data2 = await response2.json();
 
         const newSelectedOption = {
@@ -54,38 +55,35 @@ const EditShirt = () => {
           }
         });
 
-        const newPrice = calculatePrice(options, data2);
-
         setOptions(data1);
         setShirtName(data2.name);
         setSelectedOptions(newSelectedOption);
-        setPrice(newPrice);
       } catch (err) {
         console.error(err);
       }
     };
 
-    fetchOptions();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchOptionsAndShirts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const calculatePrice = (options, shirt) => {
+  useEffect(() => {
     let newPrice = basePrice;
 
     options.designOptions.forEach((option) => {
-      if (option.design === shirt.design) {
+      if (option.design === selectedOptions.design) {
         newPrice += option.price;
       }
     });
 
     options.materialOptions.forEach((option) => {
-      if (option.material === shirt.material) {
+      if (option.material === selectedOptions.material) {
         newPrice += option.price;
       }
     });
 
-    return newPrice;
-  };
+    setPrice(newPrice);
+  }, [options, selectedOptions]);
 
   const onSelectOption = (optionName, optionValue) => {
     const newSelectedOptions = { ...selectedOptions };
