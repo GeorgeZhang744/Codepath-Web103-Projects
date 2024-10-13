@@ -57,7 +57,7 @@ shirtsRouter.post("/", async (req, res) => {
 
 shirtsRouter.put("/:shirtID", async (req, res) => {
   const { shirtID } = req.params;
-  const { newName, newSize, newColor, newDesign, newMaterial } = req.body;
+  const { name, size, color, design, material } = req.body;
 
   const updateShirtQuery = `
     UPDATE "custom-shirts" 
@@ -65,7 +65,7 @@ shirtsRouter.put("/:shirtID", async (req, res) => {
     WHERE id = $6
   `;
 
-  const values = [newName, newSize, newColor, newDesign, newMaterial, shirtID];
+  const values = [name, size, color, design, material, shirtID];
 
   try {
     const result = await pool.query(updateShirtQuery, values);
