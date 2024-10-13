@@ -24,7 +24,7 @@ const DetailShirt = () => {
     designOptions: [],
     materialOptions: [],
   });
-  const [price, setPrice] = useState(basePrice); // Base price
+  const [price, setPrice] = useState(basePrice);
   const [selectedOptions, setSelectedOptions] = useState(baseSelectedOption);
 
   useEffect(() => {
@@ -46,44 +46,44 @@ const DetailShirt = () => {
           design: "",
           material: "",
         };
+
         Object.keys(data2).forEach((option) => {
           if (option in newSelectedOption) {
             newSelectedOption[option] = data2[option];
           }
         });
 
+        const newPrice = calculatePrice(options, data2)
+        
         setOptions(data1);
-        setSelectedOptions(newSelectedOption);
         setShirtName(data2.name);
+        setSelectedOptions(newSelectedOption);
+        setPrice(newPrice);
       } catch (err) {
         console.error(err);
       }
     };
 
     fetchOptions();
-  }, [shirtID]);
+  }, [options, shirtID]);
 
-  const onSelectOption = (optionName, optionValue) => {
-    const newSelectedOptions = { ...selectedOptions };
-    newSelectedOptions[optionName] = optionValue;
-
+  const calculatePrice = (options, shirt) => {
     let newPrice = basePrice;
 
     options.designOptions.forEach((option) => {
-      if (option.design === newSelectedOptions.design) {
+      if (option.design === shirt.design) {
         newPrice += option.price;
       }
     });
 
     options.materialOptions.forEach((option) => {
-      if (option.material === newSelectedOptions.material) {
+      if (option.material === shirt.material) {
         newPrice += option.price;
       }
     });
 
-    setSelectedOptions(newSelectedOptions);
-    setPrice(newPrice);
-  };
+    return newPrice
+  }
 
   // Function to render options based on the active tab
   const renderOptions = () => {
